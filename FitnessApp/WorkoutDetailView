@@ -1,0 +1,37 @@
+//
+//  WorkoutDetailView.swift
+//  FitnessApp
+//
+//  Created by Avi Patel on 11/23/22.
+//
+
+import SwiftUI
+
+struct WorkoutDetailView: View {
+    
+    var workout: Workout
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(workout.day)
+                .padding(.leading, 20)
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            Text(workout.bodyPart)
+                .padding(.leading, 20)
+                .font(.title)
+                .fontWeight(.semibold)
+            
+            // We add the id: \.self because of teh identifiable protocol
+            List(workout.routine, id: \.self){ exersice in
+                Text(exersice)
+            }
+        }
+    }
+}
+
+struct WorkoutDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        WorkoutDetailView(workout: Workout(day: "Monday", bodyPart: "Legs", image: "leg", routine: ["Warmup", "Leg Press", "Squats", "Leg extension", "Hamstring curls"]))
+    }
+}
