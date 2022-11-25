@@ -26,21 +26,22 @@ struct ContentView: View {
                     
                     
                     //vertical stack - where objects are stacked vertically
-                    VStack {
-                        
-                        Spacer()
-                        
-                        Text("Full Body Workout")
-                            .font(.largeTitle)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.purple)
-                        Text("For Beginners")
-                            .fontWeight(.regular)
-                            .foregroundColor(.purple)
-                    }
-                    .padding()
-                    .frame(width: 380)
+                        VStack {
+                            
+                            Spacer()
+                            
+                            Text("Full Body Workout")
+                                .font(.largeTitle)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                            Text("For Beginners")
+                                .fontWeight(.regular)
+                                .foregroundColor(.white)
+                        }
+                        .padding()
+                        .frame(width: 380)
                     .background(Color(.clear))
+                    
                 }
                 .frame(width: 380, height: 300)
                 .cornerRadius(20)
@@ -85,7 +86,7 @@ struct ContentView: View {
                                             .foregroundColor(.black)
                                     }
                                     .padding()
-                                    .frame(width: 150)
+                                    .frame(width: 200)
                                     .background(Color(.clear))
                                 }
                                 .frame(width: 150, height: 180)
@@ -132,3 +133,4 @@ let workoutData = [
     Workout(day: "Thursday", bodyPart: "Shoulder", image: "shoulder", routine: ["Warmup", "DB shoulder press", "Shoulder machine", "Cable lateral raises", "Cable horizonal raise"]),
     Workout(day: "Friday", bodyPart: "Leg", image: "leg", routine: ["Warmup", "Leg Press", "Squats", "Leg extension", "Hamstring curls"])
 ]
+
