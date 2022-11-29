@@ -24,19 +24,20 @@ struct WorkoutDetailView: View {
                 .padding(.leading, 20)
                 .font(.largeTitle)
                 .fontWeight(.bold)
-            
+        
+            // testing out new way of concating lists (home, machine, free) into one  list
             List {
                 Section(header: Text("Home Workout"))
                 {
-                    ForEach(workouts) { exercise in Text(exercise) }
+                    ForEach(workouts.home) { exercise in Text(exercise.home) }
                 }
                 Section(header: Text("Machines"))
                 {
-                    ForEach(workouts) { exercise in Text(exercise) }
+                    ForEach(workouts.machine) { exercise in Text(exercise.machine) }
                 }
                 Section(header: Text("Machines"))
                 {
-                    ForEach(workouts) { exercise in Text(exercise) }
+                    ForEach(workouts.free) { exercise in Text(exercise.free) }
                 }
             }
             .listStyle(GroupedListStyle())
@@ -87,4 +88,6 @@ struct WorkoutDetailView: View {
         }
     }
 //}
+
+
 
