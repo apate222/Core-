@@ -11,27 +11,80 @@ struct WorkoutDetailView: View {
     
     var workout: Workout
     
+    let legExersices = legList
+    let chestExersices = chestList
+    let backExersices = backList
+    let shoulderExersices = shoulderList
+    let armExersices = armList
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text(workout.day)
+            Text(workout.bodyPart)
+            
                 .padding(.leading, 20)
                 .font(.largeTitle)
                 .fontWeight(.bold)
-            Text(workout.bodyPart)
-                .padding(.leading, 20)
-                .font(.title)
-                .fontWeight(.semibold)
             
-            // We add the id: \.self because of teh identifiable protocol
-            List(workout.routine, id: \.self){ exersice in
-                Text(exersice)
+            List {
+                Section(header: Text("Home Workout"))
+                {
+                    ForEach(workouts) { exercise in Text(exercise) }
+                }
+                Section(header: Text("Machines"))
+                {
+                    ForEach(workouts) { exercise in Text(exercise) }
+                }
+                Section(header: Text("Machines"))
+                {
+                    ForEach(workouts) { exercise in Text(exercise) }
+                }
+            }
+            .listStyle(GroupedListStyle())
+                
+                
+                Text("Home workout")
+                    .frame(width: 200, height: 5)
+                    .padding(5)
+                    .font(.title)
+                    .background(.clear)
+                
+                List(workout.home, id: \.self){ exercise in
+                    Text(exercise)
+                // We add the id: \.self because of the identifiable protocol
+                
+ //               NavigationView{
+ //                   List(legList.exercise) { exercise in
+ //                           NavigationLink(destination: ExerciseDetailView(exercise: exercise))
+                    }
+                }
+                    Spacer()
+                    Text("Machines")
+                        .frame(width: 200, height: 10)
+                        .padding(10)
+                        .font(.title)
+                        .background(.clear)
+                
+                List(workout.machine, id: \.self){ exercise in
+                    Text(exercise)
+                    
+                }
+                Spacer()
+                Text("Free Weights")
+                    .frame(width: 200, height: 10)
+                    .padding(10)
+                    .font(.title)
+                    .background(.clear)
+                
+                List(workout.free, id: \.self){ exercise in
+                    Text(exercise)
+                    
+                }
             }
         }
+    struct WorkoutDetailView_Previews: PreviewProvider {
+        static var previews: some View {
+            WorkoutDetailView(workout: Workout(bodyPart: "Legs", image: "leg", home: ["Squat", "Forward Lunge", "Backward Lunge", "Wall Sit", "Speed Skaters"], machine: ["Leg Press", "Leg Extension", "Leg Curl", "Calf Raise", "Hip Abductor"], free: ["Weighted Squat", "Bulgarian Squat", "Hip Raise", "Romanian Deadlift", "Weighted Lunge"]))
+        }
     }
-}
+//}
 
-struct WorkoutDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        WorkoutDetailView(workout: Workout(day: "Monday", bodyPart: "Legs", image: "leg", routine: ["Warmup", "Leg Press", "Squats", "Leg extension", "Hamstring curls"]))
-    }
-}
